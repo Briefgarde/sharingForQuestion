@@ -72,7 +72,8 @@ import ProductComp from "/src/components/ProductComp.vue"
 import CartItem from "/src/components/CartItem.vue"
 import { nanoid } from 'nanoid'
 //import { axios } from "axios";
-//simply adding axios crashes the website ?
+//Simplement rajouter axios, même sans l'utiliser, semble faire crasher le site. 
+//J'ai fait la commande npm install axios
 export default {
   components: {
     ProductComp, 
@@ -132,6 +133,7 @@ export default {
       }
       else {
         this.cart.set(product, this.cart.get(product) + 1)
+        //cette méthode semble fonctionner sans problème,
       }
     },
     removeFromCart(product){
@@ -140,6 +142,8 @@ export default {
       }
       else {
         this.cart.set(product, this.cart.get(product) -  1)
+        //mais celle-ci a un comportement très bizarre, rajouter des éléments dans "cart" 
+        //avec de plus en plus de récursivité au lieu de les supprimer
       }
     }
   },
